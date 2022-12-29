@@ -7,5 +7,21 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
+
+    private void onExitClicked(object sender, EventArgs e)
+    {
+        Application.Current.Quit();
+    }
+
+    private async void onLoginClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(LoginPage), true);
+
+    }
+
+    private void onRegClicked(object sender, EventArgs e)
+    {
+
+    }
 }
 

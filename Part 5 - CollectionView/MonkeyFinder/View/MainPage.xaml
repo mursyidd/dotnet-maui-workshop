@@ -8,12 +8,14 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="True"
     x:DataType="viewmodel:MonkeysViewModel"
-    Title="Monkeys">
+    Title="Notification Services">
     <Grid
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
-        RowDefinitions="*,Auto"
+        RowDefinitions="*,Auto,Auto,Auto"
         RowSpacing="0">
+
+
         <CollectionView
             Grid.ColumnSpan="2"
             ItemsSource="{Binding Monkeys}"
@@ -45,23 +47,6 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Get Monkeys" 
-                Command="{Binding GetMonkeysCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="0"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-
-        <Button Text="Find Closest" 
-                Command="{Binding GetClosestMonkeyCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
-                Grid.Column="1"
-                Style="{StaticResource ButtonOutline}"
-                Margin="8"/>
-
-
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
                            HorizontalOptions="Fill"
@@ -69,5 +54,46 @@
                            Color="{StaticResource Primary}"
                            Grid.RowSpan="2"
                            Grid.ColumnSpan="2"/>
+
+        <Button Text="Get Monkeys" 
+                Command="{Binding GetMonkeysCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource ButtonOutline}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="8"/>
+
+        <Button Text="Find Closest" 
+            Command="{Binding GetClosestMonkeyCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Style="{StaticResource ButtonOutline}"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="8"/>
+
+        <Button x:Name="LoginBtn"
+            Text="Login"
+            Clicked="onLoginClicked"
+            Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource ButtonOutline}"
+            Margin="8"/>
+
+        <Button x:Name="RegBtn"
+            Text="Register"
+            Clicked="onRegClicked"
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource ButtonOutline}"
+            Margin="8"/>
+
+        <Button x:Name="ExitBtn"
+            Text="Exit"
+            Clicked="onExitClicked"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource ButtonOutline}"
+            Margin="8"/>
+        
     </Grid>
 </ContentPage>
