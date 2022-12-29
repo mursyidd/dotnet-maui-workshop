@@ -9,23 +9,25 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void onLoginClicked(object sender, EventArgs e)
+    private async void onLoginClicked(object sender, EventArgs e)
     {
         string username = UserEnt.Text;
         string password = PassEnt.Text;
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)) 
         {
-#if ANDROID
-            Toast.Make("Please Check Your Username and Password!", CommunityToolkit.Maui.Core.ToastDuration.Long, 18).Show();
-#endif
-#if WINDOWS
-            Snackbar.Make("Please Check Your Username and Password!", null, "YES!", TimeSpan.FromSeconds(3)).Show();
-#endif
+            Toast.Make("Username and Password Cannot Be Empty!", CommunityToolkit.Maui.Core.ToastDuration.Short, 18).Show();
         }
         else
         {
-
+            if (username.ToUpper() == "ADMIN" && password == "1234")
+            {
+                await Shell.Current.GoToAsync(nameof(DashboardPage), true);
+            }
+            else
+            {
+                Toast.Make("Please Check Your Username and Password!", CommunityToolkit.Maui.Core.ToastDuration.Short, 18).Show();
+            }
         }
     }
 

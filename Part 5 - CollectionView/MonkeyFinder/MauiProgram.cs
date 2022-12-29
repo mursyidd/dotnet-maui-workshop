@@ -33,6 +33,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<MonkeyDetailsViewModel>();
 		builder.Services.AddTransient<DetailsPage>();
         builder.Services.AddTransient<LoginPage>();
+        builder.Services.AddTransient<DashboardPage>();
 
         return builder.Build();
 	}
