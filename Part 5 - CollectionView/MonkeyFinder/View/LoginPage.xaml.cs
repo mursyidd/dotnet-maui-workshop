@@ -14,7 +14,7 @@ public partial class LoginPage : ContentPage
         string username = UserEnt.Text;
         string password = PassEnt.Text;
 
-        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)) 
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
             Toast.Make("Username and Password Cannot Be Empty!", CommunityToolkit.Maui.Core.ToastDuration.Short, 18).Show();
         }
@@ -31,9 +31,9 @@ public partial class LoginPage : ContentPage
         }
     }
 
-    private void onClearClicked(object sender, EventArgs e)
+    private async void onRegClicked(object sender, EventArgs e)
     {
-        UserEnt.Text= string.Empty;
-        PassEnt.Text = string.Empty;
+        await Shell.Current.GoToAsync(nameof(RegisterPage), true);
+
     }
 }

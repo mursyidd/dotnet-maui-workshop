@@ -7,6 +7,7 @@ public partial class App : Application
 		InitializeComponent();
 
         //string mainDir = FileSystem.Current.AppDataDirectory;
+        //MainPage = new LoginPage();
         MainPage = new AppShell();
 	}
 }
