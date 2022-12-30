@@ -6,4 +6,9 @@ public partial class DashboardPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void onExitClicked(object sender, EventArgs e)
+    {
+		Application.Current.Quit();
+    }
 }

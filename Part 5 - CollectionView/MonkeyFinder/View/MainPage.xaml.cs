@@ -19,9 +19,9 @@ public partial class MainPage : ContentPage
 
     }
 
-    private void onRegClicked(object sender, EventArgs e)
+    private async void onRegClicked(object sender, EventArgs e)
     {
-
+        await Shell.Current.GoToAsync(nameof(RegisterPage), true);
     }
 }
 
