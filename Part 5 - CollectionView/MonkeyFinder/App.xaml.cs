@@ -10,4 +10,19 @@ public partial class App : Application
         //MainPage = new LoginPage();
         MainPage = new AppShell();
 	}
+
+	static LoginDatabase database;
+
+	public static LoginDatabase Database
+	{
+		get
+		{
+			if (database == null)
+			{
+				// Username = test1, Password = test1
+				database = new LoginDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SQLiteSample.db"));
+			}
+			return database;
+		}
+	}
 }
