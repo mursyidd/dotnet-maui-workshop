@@ -19,8 +19,8 @@ public partial class App : Application
 		{
 			if (database == null)
 			{
-                // UserName = test1,
-                // Password = test1
+                // UserName = test1, Password = test1
+                // UserName = admin, Password = 1234
                 database = new LoginDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SQLiteSample.db"));
 			}
 			return database;

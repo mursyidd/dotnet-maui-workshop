@@ -36,7 +36,7 @@ namespace MonkeyFinder.ViewModel
                 {
                     //Navigation Next Page
                     //await Navigation.PushModelAsync(new ProductPage());
-                    await Shell.Current.GoToAsync(nameof(DashboardPage), true);
+                    await Shell.Current.GoToAsync($"DashboardPage?Username={logindata.UserName}");
                 }
                 else
                 {
