@@ -12,7 +12,7 @@ public partial class DashboardPage : ContentPage
         set
         {
             name = value;
-            label1.Text = "Welcome " + name.ToUpper() + "!";
+            WelomeTxt.Text = $"Welcome {name.ToUpper()}!";
         }
     }
 
