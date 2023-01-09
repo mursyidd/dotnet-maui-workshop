@@ -6,6 +6,8 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
+
+        //Skip to dashboard directly if credentials exists
         CheckUser();
     }
 

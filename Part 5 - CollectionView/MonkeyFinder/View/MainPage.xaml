@@ -8,7 +8,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="True"
     x:DataType="viewmodel:MonkeysViewModel"
-    Title="Notification Services">
+    Title="MainPage">
     <ContentPage.Content>
         <Grid>
             <Image Source="bg.jpeg" VerticalOptions="Fill" Aspect="Fill"/>
@@ -73,6 +73,14 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     Margin="8"/>-->
+
+                <Label
+                    Text="Notification Services"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Grid.ColumnSpan="2"
+                    FontSize="40"
+                    FontAttributes="Bold"/>
 
                 <Button x:Name="LoginBtn"
                     Text="Login"
