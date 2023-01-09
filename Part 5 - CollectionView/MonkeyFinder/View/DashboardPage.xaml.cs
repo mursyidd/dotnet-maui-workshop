@@ -32,7 +32,10 @@ public partial class DashboardPage : ContentPage
     public DashboardPage()
 	{
 		InitializeComponent();
-        //Preferences.Set("my_key", "my_value");
+#if WINDOWS
+        LogoutBtn.IsVisible = false;
+        ExitBtn.IsVisible = false;
+#endif
     }
 
     private async void onExitClicked(object sender, EventArgs e)
