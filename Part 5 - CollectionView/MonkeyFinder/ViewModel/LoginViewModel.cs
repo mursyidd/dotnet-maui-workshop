@@ -17,6 +17,7 @@ namespace MonkeyFinder.ViewModel
 
         public ICommand RegisterCommand { private set; get; }
         public ICommand LoginCommand { private set; get; }
+        public ICommand DeleteAllCommand { private set; get; }
 
         private INavigation Navigation;
 
@@ -24,7 +25,8 @@ namespace MonkeyFinder.ViewModel
         {
             RegisterCommand = new Command(OnRegisterCommand);
             LoginCommand = new Command(OnLoginCommand);
-            Navigation= navigation;
+            DeleteAllCommand = new Command(OnDeleteAllCommand);
+            Navigation = navigation;
         }
 
         private async void OnLoginCommand(object obj)
@@ -36,7 +38,7 @@ namespace MonkeyFinder.ViewModel
                 {
                     //Navigation Next Page
                     //await Navigation.PushModelAsync(new ProductPage());
-                    await Shell.Current.GoToAsync($"DashboardPage?Username={logindata.UserName}");
+                    await Shell.Current.GoToAsync($"DashboardPage?Username={logindata.UserName}&Password={logindata.Password}");
                 }
                 else
                 {
@@ -54,13 +56,23 @@ namespace MonkeyFinder.ViewModel
             }
         }
 
-        private void OnRegisterCommand(object obj)
+        private async void OnRegisterCommand(object obj)
         {
-            LoginModel lm = new LoginModel();
-            lm.UserName = UserName; 
-            lm.Password = Password;
-            App.Database.SaveLoginDataAsync(lm);
-            App.Current.MainPage.DisplayAlert("Success", "Registration Successfull", "Ok");
+            if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
+            {
+                LoginModel lm = new LoginModel();
+                lm.UserName = UserName;
+                lm.Password = Password;
+                await App.Database.SaveLoginDataAsync(lm);
+                await App.Current.MainPage.DisplayAlert("Success", "Registration Successfull", "Ok");
+            }
+            else
+                await App.Current.MainPage.DisplayAlert("Error", "Please check your username/password!", "Ok");
+        }
+
+        private async void OnDeleteAllCommand()
+        {
+            await App.Database.DeleteLoginDataAsync();
         }
     }
 }

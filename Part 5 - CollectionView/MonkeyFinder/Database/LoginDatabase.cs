@@ -26,5 +26,10 @@ namespace MonkeyFinder
         {
             return database.InsertAsync(logindata);
         }
+
+        public Task<int> DeleteLoginDataAsync()
+        {
+            return database.DeleteAllAsync<LoginModel>();
+        }
     }
 }

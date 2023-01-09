@@ -29,6 +29,7 @@
                     <VerticalStackLayout Spacing="20">
                         <Button Text="Login" Command="{Binding LoginCommand}" HeightRequest="40" WidthRequest="100" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>
                         <Button Text="Register" Command="{Binding RegisterCommand}" HeightRequest="40" WidthRequest="100" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>
+                        <!--<Button Text="Delete all" Command="{Binding DeleteAllCommand}" HeightRequest="40" WidthRequest="100" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>-->
                     </VerticalStackLayout>
                 </Grid>
             </Grid>
