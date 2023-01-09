@@ -60,11 +60,17 @@ namespace MonkeyFinder.ViewModel
         {
             if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
             {
-                LoginModel lm = new LoginModel();
-                lm.UserName = UserName;
-                lm.Password = Password;
-                await App.Database.SaveLoginDataAsync(lm);
-                await App.Current.MainPage.DisplayAlert("Success", "Registration Successfull", "Ok");
+                var logindata = await App.Database.GetLoginDataAsync(UserName);
+                if (logindata == null)
+                {
+                    LoginModel lm = new LoginModel();
+                    lm.UserName = UserName;
+                    lm.Password = Password;
+                    await App.Database.SaveLoginDataAsync(lm);
+                    await App.Current.MainPage.DisplayAlert("Success", "Registration Successfull", "Ok");
+                }
+                else
+                    await App.Current.MainPage.DisplayAlert("Failure", "The username has been taken!", "Ok");
             }
             else
                 await App.Current.MainPage.DisplayAlert("Error", "Please check your username/password!", "Ok");
