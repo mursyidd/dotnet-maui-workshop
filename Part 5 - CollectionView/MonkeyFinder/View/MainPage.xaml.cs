@@ -14,16 +14,22 @@ public partial class MainPage : ContentPage
     private async void CheckUser()
     {
         bool hasKey = Preferences.Default.ContainsKey("Username");
-        if (hasKey)
+        bool staySignIn = Preferences.Default.ContainsKey("StaySignIn");
+        if (staySignIn)
         {
-            string Username = Preferences.Default.Get("Username", "Unknown");
-            string Password = Preferences.Default.Get("Password", "Unknown");
-            await Shell.Current.GoToAsync($"DashboardPage?Username={Username}&Password={Password}");
+            if (hasKey)
+            {
+                string Username = Preferences.Default.Get("Username", "Unknown");
+                string Password = Preferences.Default.Get("Password", "Unknown");
+                await Shell.Current.GoToAsync($"DashboardPage?Username={Username}&Password={Password}");
+            }
         }
     }
 
     private void onExitClicked(object sender, EventArgs e)
     {
+        Preferences.Default.Clear();
+
         Application.Current.Quit();
     }
 

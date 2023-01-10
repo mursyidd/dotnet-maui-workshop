@@ -13,22 +13,38 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Grid.Column="0" Text="User Name" FontSize="17" FontAttributes="Bold" TextColor="#2c363c"/>
                 <Frame Grid.Row="1" Grid.Column="0" HeightRequest="80">
-                    <Entry Text="{Binding UserName}" TextColor="Black" HeightRequest="48" WidthRequest="200"/>
+                    <Entry Text="{Binding UserName}" x:Name="nametxt" TextColor="Black" HeightRequest="48" WidthRequest="200"/>
                 </Frame>
 
                 <Label Grid.Row="2" Grid.Column="0" Text="Password" FontSize="17" FontAttributes="Bold" TextColor="#2c363c"/>
                 <Frame Grid.Row="3" Grid.Column="0" HeightRequest="80">
-                    <Entry Text="{Binding Password}" TextColor="Black" IsPassword="True" HeightRequest="48" WidthRequest="200"/>
+                    <Entry Text="{Binding Password}" x:Name="passwordtxt" TextColor="Black" IsPassword="True" HeightRequest="48" WidthRequest="200"/>
                 </Frame>
 
-                <Grid Grid.Row="4" Padding="0,40,0,0">
+                <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">
+                    <CheckBox x:Name="onlinechk" CheckedChanged="StaySignInRadio_CheckedChanged" Margin="0,8"/>
+                    <!--<Label VerticalOptions="Center" Text="Remember me" FontSize="18" Margin="0,8"/>-->
+                    <Label 
+                        Text="Remember me"
+                        FontSize="18" Margin="0,8"
+                        VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer 
+                            Tapped="TapGestureRecognizer_Tapped"
+                            NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+                
+                <Grid Grid.Row="5" Padding="0,40,0,0">
                     <VerticalStackLayout Spacing="20">
-                        <Button Text="Login" Command="{Binding LoginCommand}" HeightRequest="40" WidthRequest="100" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>
-                        <Button Text="Register" Command="{Binding RegisterCommand}" HeightRequest="40" WidthRequest="100" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>
+                        <Button Text="Login" Command="{Binding LoginCommand}" HeightRequest="40" WidthRequest="150" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>
+                        <Button Text="Register" Command="{Binding RegisterCommand}" HeightRequest="40" WidthRequest="150" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>
                         <!--<Button Text="Delete all" Command="{Binding DeleteAllCommand}" HeightRequest="40" WidthRequest="100" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>-->
                     </VerticalStackLayout>
                 </Grid>
