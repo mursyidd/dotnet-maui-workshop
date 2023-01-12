@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MonkeyFinder.Services;
 using MonkeyFinder.View;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace MonkeyFinder;
 
@@ -12,6 +13,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+            .ConfigureSyncfusionCore()
             .UseMauiApp<App>().UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{

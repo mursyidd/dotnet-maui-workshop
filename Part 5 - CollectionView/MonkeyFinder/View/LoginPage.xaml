@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              x:Class="MonkeyFinder.LoginPage"
              Title="Login Page">
     <ContentPage.Content>
@@ -12,23 +13,18 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="User Name" FontSize="17" FontAttributes="Bold" TextColor="#2c363c"/>
-                <Frame Grid.Row="1" Grid.Column="0" HeightRequest="80">
+
+                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" WidthRequest="250" Hint="Name" ContainerType="Outlined" OutlineCornerRadius="8">
                     <Entry Text="{Binding UserName}" x:Name="nametxt" TextColor="Black" HeightRequest="48" WidthRequest="200"/>
-                </Frame>
-
-                <Label Grid.Row="2" Grid.Column="0" Text="Password" FontSize="17" FontAttributes="Bold" TextColor="#2c363c"/>
-                <Frame Grid.Row="3" Grid.Column="0" HeightRequest="80">
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout EnablePasswordVisibilityToggle="True" Grid.Row="1" Grid.Column="0" WidthRequest="250" Hint="Password" ContainerType="Outlined" OutlineCornerRadius="8">
                     <Entry Text="{Binding Password}" x:Name="passwordtxt" TextColor="Black" IsPassword="True" HeightRequest="48" WidthRequest="200"/>
-                </Frame>
+                </inputLayout:SfTextInputLayout>
 
-                <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">
+                <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center">
                     <CheckBox x:Name="onlinechk" CheckedChanged="StaySignInRadio_CheckedChanged" Margin="0,8"/>
-                    <!--<Label VerticalOptions="Center" Text="Remember me" FontSize="18" Margin="0,8"/>-->
                     <Label 
                         Text="Remember me"
                         FontSize="18" Margin="0,8"
@@ -40,8 +36,8 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </HorizontalStackLayout>
-                
-                <Grid Grid.Row="5" Padding="0,40,0,0">
+
+                <Grid Grid.Row="3" Padding="0,40,0,0">
                     <VerticalStackLayout Spacing="20">
                         <Button Text="Login" Command="{Binding LoginCommand}" HeightRequest="40" WidthRequest="150" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>
                         <Button Text="Register" Command="{Binding RegisterCommand}" HeightRequest="40" WidthRequest="150" BackgroundColor="#2c363c" Style="{StaticResource ButtonOutline}"/>

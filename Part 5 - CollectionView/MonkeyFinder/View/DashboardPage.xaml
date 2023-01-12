@@ -9,9 +9,19 @@
     </Shell.BackButtonBehavior>
 
     <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Open"/>
+            <MenuFlyoutItem Text="Load"/>
+            <MenuFlyoutItem Text="Inbox"/>
+            <MenuFlyoutItem Text="Send Notification"/>
+        </MenuBarItem>
         <MenuBarItem Text="Option">
             <MenuFlyoutItem Text="Logout" Clicked="onLogoutClicked"/>
             <MenuFlyoutItem Text="Exit" Clicked="onExitClicked"/>
+        </MenuBarItem>
+        <MenuBarItem Text="Preferences">
+            <MenuFlyoutItem Text="Open on startup"/>
+            <MenuFlyoutItem Text="Closed"/>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
 
